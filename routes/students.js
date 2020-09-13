@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const app = express.Router();
-const db = require('./../data/db');
+const mysql = require('./../data/db');
 const { to } = require("await-to-js");
 
 app.get("/", async(req, res) => {
