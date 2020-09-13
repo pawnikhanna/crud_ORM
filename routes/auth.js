@@ -5,7 +5,7 @@ const {to} = require('await-to-js');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 var validator = require("email-validator");
-const db = require('./../data/db');
+const mysql = require('./../data/db');
 
 let salt = 'mysalt';
 const generateToken = (password, salt) => {
