@@ -3,7 +3,8 @@ const fs = require('fs');
 const app = express.Router();
 const { to } = require("await-to-js");
 const auth = require('./../middleware/verify');
-const Sequelize  = require('./../data/db');
+const mysql  = require('./../data/db');
+const Sequelize = require('sequelize')
 
 app.get("/", async(req, res) => {
     let [err, result] = await to( mysql.coursesModel.findAll() )
