@@ -1,5 +1,5 @@
 const {to} = require('await-to-js')
-const {Sequelize, Datatypes, DataTypes} = require('sequelize')
+const {Sequelize, DataTypes} = require('sequelize')
 
 let connection = new Sequelize(
     'CRUD',
@@ -12,7 +12,7 @@ let connection = new Sequelize(
 
 const coursesModel = connection.define('courses', {
     id : {
-        type: DataTypes.BIGINT(11),
+        type: DataTypes.INTEGER,
         autoIncrement:true,
         allowNull: false,
         primaryKey: true 
@@ -31,7 +31,7 @@ const coursesModel = connection.define('courses', {
 
 const studentsModel = connection.define('students', {
     id:{
-        type: DataTypes.BIGINT(11),
+        type: DataTypes.INTEGER,
         autoIncrement:true,
         allowNull: false,
         primaryKey: true
@@ -61,19 +61,11 @@ const studentsModel = connection.define('students', {
 const enrolled_studentsModel = connection.define('enrolled_students', {
     course_id :{
         type: DataTypes.BIGINT(11),
-        allowNull:false,
-        references:{
-            model: coursesModel,
-            key: 'id'
-        }
+        allowNull:false
     },
     student_name :{
         type: DataTypes.BIGINT(11),
-        allowNull:false,
-        references:{
-            model: studentsModel,
-            key: 'name'
-        }
+        allowNull:false
     }
 })
 
