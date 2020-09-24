@@ -1,14 +1,16 @@
-const {to} = require('await-to-js')
-const {Sequelize, DataTypes} = require('sequelize')
+const {to} = require('await-to-js');
+const {Sequelize, DataTypes} = require('sequelize');
+require('dotenv').config();
 
 let connection = new Sequelize(
-    'CRUD',
-    'root',
-    'Pawni@123',
+    process.env.DATABASE,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
     {
-        host     : 'localhost',
-        dialect  : 'mysql' 
-});
+        host : process.env.HOST,
+        dialect : 'mysql'
+    }
+);
 
 const coursesModel = connection.define('courses', {
     id : {
@@ -68,7 +70,6 @@ const enrolled_studentsModel = connection.define('enrolled_students', {
         allowNull:false
     }
 })
-
 
 const connect = async () =>{
     let [err, res] = await to ( connection.sync( {alter:true} ) )
